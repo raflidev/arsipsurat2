@@ -65,7 +65,7 @@ class Login extends CI_Controller
 		$num = $query->num_rows();
 		if ($num == 0) {
 			$this->session->set_flashdata("failed", "username atau password anda salah");
-			redirect('login');
+			redirect('login/bagian');
 		} else {
 			$data = $query->row_array();
 			if (isset($data)) {
@@ -78,7 +78,7 @@ class Login extends CI_Controller
 				redirect('admin');
 			} else {
 				$this->session->set_flashdata("failed", "username atau password anda salah");
-				redirect('login');
+				redirect('login/bagian');
 			}
 		}
 	}
