@@ -14,8 +14,8 @@
 </head>
 
 <body class="nav-md">
-	<div class="container body">
-		<div class="main_container">
+	<div class="container body" style="background-color:#5F9DF7;background:#5F9DF7">
+		<div class="main_container" style="background-color:#5F9DF7;background:#5F9DF7">
 			<!-- Profile and Sidebarmenu -->
 			<?php
 			$this->load->view('admin/admin_sidebar');

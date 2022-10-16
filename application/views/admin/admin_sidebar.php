@@ -2,16 +2,16 @@
 $sql  		= $this->db->query("SELECT * FROM tb_admin where id_admin='" . $_SESSION['id'] . "'");
 $data 		= $sql->row_array();
 ?>
-<div class="col-md-3 left_col" style="background-color:#3C4048;background:#3C4048">
-	<div class="left_col scroll-view" style="background-color:#3C4048">
-		<div class="navbar nav_title" style="border: 0; background-color:#3C4048">
+<div class="col-md-3 left_col" style="background-color:#5F9DF7;background:#5F9DF7">
+	<div class="left_col" style="background-color:#5F9DF7;background:#5F9DF7">
+		<div class="navbar nav_title" style="border: 0; background-color:#5F9DF7;background:#5F9DF7">
 			<a href="<?= base_url() ?>admin" class="site_title"><i class="fa fa-envelope"></i> <span> Arsip Surat</span></a>
 		</div>
 
-		<div class="clearfix" style="background-color:#3C4048"></div>
+		<div class="clearfix" style="background-color:#5F9DF7;background:#5F9DF7"></div>
 
 		<!-- menu profile quick info -->
-		<div class="profile clearfix" style="padding-left:5px;background-color:#3C4048">
+		<div class="profile clearfix" style="padding-left:5px;background-color:#5F9DF7">
 			<div class="profile_info">
 				<span>Selamat Datang,</span>
 				<h2><?= $_SESSION['nama']; ?></h2>
@@ -21,7 +21,7 @@ $data 		= $sql->row_array();
 
 		<br />
 		<!-- sidebar menu -->
-		<div id="sidebar-menu" class="main_menu_side hidden-print main_menu" style="background-color:#3C4048">
+		<div id="sidebar-menu" class="main_menu_side hidden-print main_menu" style="background-color:#5F9DF7">
 			<div class="menu_section">
 				<h3>Dashboard</h3>
 				<ul class="nav side-menu">
