@@ -8,7 +8,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Arsip Surat SMK 10 November </title>
+	<title>Arsip Surat SMK AL-MUNIR </title>
 
 	<?php $this->load->view('templates/tem_header'); ?>
 </head>

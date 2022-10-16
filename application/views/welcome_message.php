@@ -39,7 +39,6 @@
 	</header>
 
 	<!-- section menu -->
-	<!-- <nav class="navbar navbar-expand-lg navbar-light bg-biru"> -->
 	<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #256D85; border-bottom: 5px solid #06283D;">
 		<!-- letak .navbar-light -->
 		<div class="container">

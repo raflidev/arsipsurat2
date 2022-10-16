@@ -1,198 +1,198 @@
 <!DOCTYPE html>
 <?php
-if($this->session->userdata('v4lid') == "bagian"){
-  $this->session->set_flashdata('failed', 'Anda tidak punya hak akses');
-  redirect('admin');
+if ($this->session->userdata('v4lid') == "bagian") {
+	$this->session->set_flashdata('failed', 'Anda tidak punya hak akses');
+	redirect('admin');
 }
 ?>
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Arsip Surat SMK 10 November </title>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<!-- Meta, title, CSS, favicons, etc. -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-   <?php $this->load->view('templates/tem_header'); ?>
-  </head>
+	<title>Arsip Surat SMK AL-MUNIR </title>
 
-  <body class="nav-md">
-    <div class="container body">
-      <div class="main_container">
-        <!-- Profile and Sidebarmenu -->
-        <?php
-            $this->load->view('admin/admin_sidebar');
-        ?>
-        <!-- /Profile and Sidebarmenu -->
-        
-        <!-- top navigation -->
-        <?php
-            $this->load->view('admin/admin_header');
-        ?>
-        <!-- /top navigation -->
+	<?php $this->load->view('templates/tem_header'); ?>
+</head>
 
-        <!-- page content -->
-        <div class="right_col" role="main">
-          <div class="">
-            <div class="page-title">
-              <div class="title_right">
-                <?php
-                    if (isset($_SESSION['success'])) {?>
-                      <div class="alert alert-success alert-dismissible" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <?= $_SESSION['success']; ?>
-                      </div>
-                    <?php } else if(isset($_SESSION['failed'])) {
-                  ?>
-                    <div class="alert alert-danger alert-dismissible" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <?= $_SESSION['failed']; ?>
-                      </div>
-                  <?php } ?>
-                <h2>Surat Masuk > <small>Laporan Surat Masuk</small></h2>
-              </div>
-            </div>
+<body class="nav-md">
+	<div class="container body">
+		<div class="main_container">
+			<!-- Profile and Sidebarmenu -->
+			<?php
+			$this->load->view('admin/admin_sidebar');
+			?>
+			<!-- /Profile and Sidebarmenu -->
 
-            <div class="clearfix"></div>
+			<!-- top navigation -->
+			<?php
+			$this->load->view('admin/admin_header');
+			?>
+			<!-- /top navigation -->
 
-            <div class="row">
-              <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2>Data<small>Surat Masuk</small></h2>
-                    <div class="clearfix"></div>
-                  </div>
-                  <?php
-                    $from = isset($_GET['from']) ?  (date('Y-m-d', strtotime($_GET['from']))) : 0;
-                    $to = isset($_GET['to']) ?  (date('Y-m-d', strtotime($_GET['to']) + 86400)) : 0;
-                    $tipe = isset($_GET['tipe_tgl']) ? $_GET['tipe_tgl'] : 0;
-                    if(isset($_GET['tipe_tgl'])){
-                      $value_tipe = ($_GET['tipe_tgl'] == "tanggalmasuk_suratmasuk") ? "Tanggal Masuk" : "Tanggal Surat";
-  
-                      $value_place_x = ($_GET['tipe_tgl'] == "tanggalmasuk_suratmasuk") ? "tanggalsurat_suratmasuk" : "tanggalmasuk_suratmasuk";
-                      $value_tipe_x = ($_GET['tipe_tgl'] == "tanggalmasuk_suratmasuk") ? "Tanggal Surat" : "Tanggal Masuk";
-                    }
-                    if(isset($from) && isset($to)){
-                      $sql1  		= $this->db->query("SELECT * FROM tb_suratmasuk where $tipe between '$from' and '$to' order by id_suratmasuk asc");
-                      $total		= $sql1->num_rows();
-                    }
-                  ?>
-                      <form action="<?= base_url('admin/laporan_suratmasuk') ?>"  name="download_suratmasuk" method="get" enctype="multipart/form-data" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
-                      <div class="col-md-2 col-sm-2 col-xs-6">
-                        <select class="form-control" name="tipe_tgl">
-                          <?php
-                            if(isset($_GET['tipe_tgl'])){?>
-                                <option value="<?= $_GET['tipe_tgl'] ?>"><?= $value_tipe ?></option>
-                                <option value="<?= $value_place_x ?>"><?= $value_tipe_x ?></option>
-                            <?php }else{ ?>
-                          <option value="tanggalmasuk_suratmasuk">Tanggal Masuk</option>
-                          <option value="tanggalsurat_suratmasuk">Tanggal Surat</option>
-                          <?php } ?>
-                        </select>
-                      </div>
-                        <div class="col-md-2 col-sm-2 col-xs-6">
-                          <fieldset>
-                            <div class="control-group">
-                              <div class="controls">
-                                  <input type="text" value="<?= (isset($_GET['from'])) ? $_GET['from'] : date("m/d/Y")?>" class="form-control has-feedback-left" value="11/14/2001" id="single_cal3" name="from" aria-describedby="inputSuccess2Status3">
-                                  <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
-                                  <span id="inputSuccess2Status3" class="sr-only">(success)</span>
-                              </div>
-                            </div>
-                          </fieldset>
-                        </div>
-                        <div class="col-md-2 col-sm-2 col-xs-6">
-                        <fieldset>
-                            <div class="control-group">
-                              <div class="controls">
-                                  <input type="text" value="<?= (isset($_GET['to'])) ? $_GET['to'] : date("m/d/Y")?>" class="form-control has-feedback-left" id="single_cal4" name="to" aria-describedby="inputSuccess2Status4">
-                                  <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
-                                  <span id="inputSuccess2Status4" class="sr-only">(success)</span>
-                              </div>
-                            </div>
-                          </fieldset>
-                        </div>
-                  <button type="submit" class="btn btn-success"><i class="fa fa-search"></i> Filter</button></a>
-                  <?php
-                  if($total != 0){ ?>
-                      <a href="<?= base_url('admin/laporan_suratmasuk_pdf?from='.$from.'&to='.$to.'&tipe_tgl='.$tipe.'') ?>" target="_blank"class="btn btn-success"><i class="fa fa-download"></i> Unduh Laporan PDF</a></a>
-                      <a href="<?= base_url('admin/laporan_suratmasuk_excel?from='.$from.'&to='.$to.'&tipe_tgl='.$tipe.'') ?>" target="_blank"class="btn btn-success"><i class="fa fa-download"></i> Unduh Laporan Excel</a></a>
-                    <?php }
-                    ?>
+			<!-- page content -->
+			<div class="right_col" role="main">
+				<div class="">
+					<div class="page-title">
+						<div class="title_right">
+							<?php
+							if (isset($_SESSION['success'])) { ?>
+								<div class="alert alert-success alert-dismissible" role="alert">
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									<?= $_SESSION['success']; ?>
+								</div>
+							<?php } else if (isset($_SESSION['failed'])) {
+							?>
+								<div class="alert alert-danger alert-dismissible" role="alert">
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									<?= $_SESSION['failed']; ?>
+								</div>
+							<?php } ?>
+							<h2>Surat Masuk > <small>Laporan Surat Masuk</small></h2>
+						</div>
+					</div>
 
-                  </form>
-                  <div class="x_content">
-                              <?php
-                                if ($total == 0) {
-                                  echo"<center><h2>Belum Ada Data Surat Masuk</h2></center>";
-                                }
-                                else{?>
-                    <table id="datatable" class="table table-striped table-bordered">
-                      <thead>
-                        <tr>
-                          <th width="3%">No Urut</th>
-                          <th width="10%">Tanggal Masuk</th>
-                          <th width="3%">Kode Surat</th>
-                          <th width="10%">Tanggal Surat</th>
-                          <th width="14%">Pengirim</th>
-                          <th width="15%">Nomor Surat</th>
-                          <th width="10%">Kepada</th>
-                          <th width="25%">Perihal</th>
-                        </tr>
-                      </thead>
+					<div class="clearfix"></div>
+
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div class="x_panel">
+								<div class="x_title">
+									<h2>Data<small>Surat Masuk</small></h2>
+									<div class="clearfix"></div>
+								</div>
+								<?php
+								$from = isset($_GET['from']) ?  (date('Y-m-d', strtotime($_GET['from']))) : 0;
+								$to = isset($_GET['to']) ?  (date('Y-m-d', strtotime($_GET['to']) + 86400)) : 0;
+								$tipe = isset($_GET['tipe_tgl']) ? $_GET['tipe_tgl'] : 0;
+								if (isset($_GET['tipe_tgl'])) {
+									$value_tipe = ($_GET['tipe_tgl'] == "tanggalmasuk_suratmasuk") ? "Tanggal Masuk" : "Tanggal Surat";
+
+									$value_place_x = ($_GET['tipe_tgl'] == "tanggalmasuk_suratmasuk") ? "tanggalsurat_suratmasuk" : "tanggalmasuk_suratmasuk";
+									$value_tipe_x = ($_GET['tipe_tgl'] == "tanggalmasuk_suratmasuk") ? "Tanggal Surat" : "Tanggal Masuk";
+								}
+								if (isset($from) && isset($to)) {
+									$sql1  		= $this->db->query("SELECT * FROM tb_suratmasuk where $tipe between '$from' and '$to' order by id_suratmasuk asc");
+									$total		= $sql1->num_rows();
+								}
+								?>
+								<form action="<?= base_url('admin/laporan_suratmasuk') ?>" name="download_suratmasuk" method="get" enctype="multipart/form-data" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+									<div class="col-md-2 col-sm-2 col-xs-6">
+										<select class="form-control" name="tipe_tgl">
+											<?php
+											if (isset($_GET['tipe_tgl'])) { ?>
+												<option value="<?= $_GET['tipe_tgl'] ?>"><?= $value_tipe ?></option>
+												<option value="<?= $value_place_x ?>"><?= $value_tipe_x ?></option>
+											<?php } else { ?>
+												<option value="tanggalmasuk_suratmasuk">Tanggal Masuk</option>
+												<option value="tanggalsurat_suratmasuk">Tanggal Surat</option>
+											<?php } ?>
+										</select>
+									</div>
+									<div class="col-md-2 col-sm-2 col-xs-6">
+										<fieldset>
+											<div class="control-group">
+												<div class="controls">
+													<input type="text" value="<?= (isset($_GET['from'])) ? $_GET['from'] : date("m/d/Y") ?>" class="form-control has-feedback-left" value="11/14/2001" id="single_cal3" name="from" aria-describedby="inputSuccess2Status3">
+													<span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+													<span id="inputSuccess2Status3" class="sr-only">(success)</span>
+												</div>
+											</div>
+										</fieldset>
+									</div>
+									<div class="col-md-2 col-sm-2 col-xs-6">
+										<fieldset>
+											<div class="control-group">
+												<div class="controls">
+													<input type="text" value="<?= (isset($_GET['to'])) ? $_GET['to'] : date("m/d/Y") ?>" class="form-control has-feedback-left" id="single_cal4" name="to" aria-describedby="inputSuccess2Status4">
+													<span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+													<span id="inputSuccess2Status4" class="sr-only">(success)</span>
+												</div>
+											</div>
+										</fieldset>
+									</div>
+									<button type="submit" class="btn btn-success"><i class="fa fa-search"></i> Filter</button></a>
+									<?php
+									if ($total != 0) { ?>
+										<a href="<?= base_url('admin/laporan_suratmasuk_pdf?from=' . $from . '&to=' . $to . '&tipe_tgl=' . $tipe . '') ?>" target="_blank" class="btn btn-success"><i class="fa fa-download"></i> Unduh Laporan PDF</a></a>
+										<a href="<?= base_url('admin/laporan_suratmasuk_excel?from=' . $from . '&to=' . $to . '&tipe_tgl=' . $tipe . '') ?>" target="_blank" class="btn btn-success"><i class="fa fa-download"></i> Unduh Laporan Excel</a></a>
+									<?php }
+									?>
+
+								</form>
+								<div class="x_content">
+									<?php
+									if ($total == 0) {
+										echo "<center><h2>Belum Ada Data Surat Masuk</h2></center>";
+									} else { ?>
+										<table id="datatable" class="table table-striped table-bordered">
+											<thead>
+												<tr>
+													<th width="3%">No Urut</th>
+													<th width="10%">Tanggal Masuk</th>
+													<th width="3%">Kode Surat</th>
+													<th width="10%">Tanggal Surat</th>
+													<th width="14%">Pengirim</th>
+													<th width="15%">Nomor Surat</th>
+													<th width="10%">Kepada</th>
+													<th width="25%">Perihal</th>
+												</tr>
+											</thead>
 
 
-                      <tbody>
-                            <?php
-                            
-                            foreach($sql1->result_array() as $data){
-                              echo'<tr>
-                              <td>	'. $data['nomorurut_suratmasuk'].'  	</td>
-                              <td>	'. $data['tanggalmasuk_suratmasuk'].'		</td>
-                              <td>	'. $data['kode_suratmasuk'].'	</td>
-                              <td>	'. $data['tanggalsurat_suratmasuk'].'	</td>
-                              <td>	'. $data['pengirim'].'  		</td>
-                              <td>	'. $data['nomor_suratmasuk'].'  		</td>
-                              <td>	'. $data['kepada_suratmasuk'].'		</td>
-                              <td>  '. $data['perihal_suratmasuk'].'  </td> 
+											<tbody>
+												<?php
+
+												foreach ($sql1->result_array() as $data) {
+													echo '<tr>
+                              <td>	' . $data['nomorurut_suratmasuk'] . '  	</td>
+                              <td>	' . $data['tanggalmasuk_suratmasuk'] . '		</td>
+                              <td>	' . $data['kode_suratmasuk'] . '	</td>
+                              <td>	' . $data['tanggalsurat_suratmasuk'] . '	</td>
+                              <td>	' . $data['pengirim'] . '  		</td>
+                              <td>	' . $data['nomor_suratmasuk'] . '  		</td>
+                              <td>	' . $data['kepada_suratmasuk'] . '		</td>
+                              <td>  ' . $data['perihal_suratmasuk'] . '  </td> 
                               </tr>';
-                            }
-                            ?>
-                      </tbody>
-                    </table>
-                   <?php } ?>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- /page content -->
+												}
+												?>
+											</tbody>
+										</table>
+									<?php } ?>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /page content -->
 
-        <!-- footer content -->
-        <footer>
-          <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-          </div>
-          <div class="clearfix"></div>
-        </footer>
-        <!-- /footer content -->
-      </div>
-    </div>
+			<!-- footer content -->
+			<footer>
+				<div class="pull-right">
+					Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+				</div>
+				<div class="clearfix"></div>
+			</footer>
+			<!-- /footer content -->
+		</div>
+	</div>
 
-   
-    <?php $this->load->view('templates/tem_footer'); ?>
-    
-    <script type="text/javascript" language="JavaScript">
-        function konfirmasi()
-        {
-        tanya = confirm("Anda Yakin Akan Menghapus Data ?");
-        if (tanya == true) return true;
-        else return false;
-        }
-    </script>
 
-  </body>
+	<?php $this->load->view('templates/tem_footer'); ?>
+
+	<script type="text/javascript" language="JavaScript">
+		function konfirmasi() {
+			tanya = confirm("Anda Yakin Akan Menghapus Data ?");
+			if (tanya == true) return true;
+			else return false;
+		}
+	</script>
+
+</body>
+
 </html>
