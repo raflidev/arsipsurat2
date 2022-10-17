@@ -25,15 +25,20 @@ $data 		= $sql->row_array();
 			<div class="menu_section">
 				<h3>Dashboard</h3>
 				<ul class="nav side-menu">
-					<li><a href="<?= base_url('admin') ?>"><i class="fa fa-dashboard"></i> Dashboard</a>
-
-					</li>
+					<?php if ($this->session->userdata('v4lid') == "admin") { ?>
+						<li><a href="<?= base_url('admin') ?>"><i class="fa fa-dashboard"></i> Dashboard</a>
+						<?php } else { ?>
+						<li><a href="<?= base_url('bagian') ?>"><i class="fa fa-dashboard"></i> Dashboard</a>
+						<?php } ?>
+						</li>
 				</ul>
 				<h3>General</h3>
 				<ul class="nav side-menu">
 					<li><a><i class="fa fa-file-text"></i> Kategori Surat <span class="fa fa-chevron-down"></span></a>
 						<ul class="nav child_menu">
-							<li><a href="<?= base_url('admin/suratmasuk') ?>"><i class="fa  fa-inbox"></i>Surat Masuk</a></li>
+							<?php if ($this->session->userdata('v4lid') == "bagian") { ?>
+								<li><a href="<?= base_url('bagian/suratmasuk') ?>"><i class="fa  fa-inbox"></i>Surat Masuk</a></li>
+							<?php } ?>
 							<?php if ($this->session->userdata('v4lid') == "admin") { ?>
 								<li><a href="<?= base_url('admin/suratkeluar') ?>"><i class="fa fa-send"></i>Surat Keluar</a></li>
 							<?php } ?>
