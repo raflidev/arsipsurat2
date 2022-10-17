@@ -103,7 +103,8 @@ if ($this->session->userdata('v4lid') == "bagian") {
 				<br>
 				Ka. Prog. Tata Usaha
 			</p>
-			<img src="<?= $base64 ?>" width="150" alt="">
+			<br>
+			<br>
 			<br>
 			<span><?= $data_query['nama_tu'] ?></span>
 		</div>
