@@ -247,6 +247,7 @@ class Admin extends CI_Controller
 		$sheet->setCellValue('F4', 'No. Surat');
 		$sheet->setCellValue('G4', 'Kepada');
 		$sheet->setCellValue('H4', 'Perihal');
+		$sheet->setCellValue('I4', 'File');
 		$no = 1;
 		$excel_row = 5;
 		foreach ($data->result() as $row) {
@@ -258,6 +259,7 @@ class Admin extends CI_Controller
 			$sheet->setCellValue('F' . $excel_row, $row->nomor_suratmasuk);
 			$sheet->setCellValue('G' . $excel_row, $row->kepada_suratmasuk);
 			$sheet->setCellValue('H' . $excel_row, $row->perihal_suratmasuk);
+			$sheet->setCellValue('I' . $excel_row, base_url('public/surat_masuk/') . $row->file_suratmasuk);
 			$no++;
 			$excel_row++;
 		}
@@ -322,6 +324,7 @@ class Admin extends CI_Controller
 		$sheet->setCellValue('F4', 'No. Surat');
 		$sheet->setCellValue('G4', 'Kepada');
 		$sheet->setCellValue('H4', 'Perihal');
+		$sheet->setCellValue('I4', 'File');
 		$no = 1;
 		$excel_row = 5;
 		foreach ($data->result() as $row) {
@@ -333,6 +336,7 @@ class Admin extends CI_Controller
 			$sheet->setCellValue('F' . $excel_row, $row->nomor_suratkeluar);
 			$sheet->setCellValue('G' . $excel_row, $row->kepada_suratkeluar);
 			$sheet->setCellValue('H' . $excel_row, $row->perihal_suratkeluar);
+			$sheet->setCellValue('I' . $excel_row, base_url('public/surat_keluar/') . $row->file_suratkeluar);
 			$no++;
 			$excel_row++;
 		}

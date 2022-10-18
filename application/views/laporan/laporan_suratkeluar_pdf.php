@@ -65,6 +65,7 @@ if ($this->session->userdata('v4lid') == "bagian") {
 				<th>Nomor Surat</th>
 				<th>Kepada</th>
 				<th>Perihal</th>
+				<th>File</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -73,13 +74,14 @@ if ($this->session->userdata('v4lid') == "bagian") {
 			foreach ($suratkeluar->result_array() as $data) { ?>
 				<tr>
 					<td scope="row"><?= $no ?></td>
-					<td><?= date("d-m-Y", strtotime($data['tanggalkeluar_suratkeluar'])) ?></td>
-					<td><?= date("d-m-Y", strtotime($data['tanggalsurat_suratkeluar'])) ?></td>
-					<td><?= $data['kode_suratkeluar'] ?></td>
-					<td><?= $data['nama_bagian'] ?></td>
-					<td><?= $data['nomor_suratkeluar'] ?></td>
-					<td><?= $data['kepada_suratkeluar'] ?></td>
-					<td><?= $data['perihal_suratkeluar'] ?></td>
+					<td style="word-break:break-all; word-wrap:break-word"><?= date("d-m-Y", strtotime($data['tanggalkeluar_suratkeluar'])) ?></td>
+					<td style="word-break:break-all; word-wrap:break-word"><?= date("d-m-Y", strtotime($data['tanggalsurat_suratkeluar'])) ?></td>
+					<td style="word-break:break-all; word-wrap:break-word"><?= $data['kode_suratkeluar'] ?></td>
+					<td style="word-break:break-all; word-wrap:break-word"><?= $data['nama_bagian'] ?></td>
+					<td style="word-break:break-all; word-wrap:break-word"><?= $data['nomor_suratkeluar'] ?></td>
+					<td style="word-break:break-all; word-wrap:break-word"><?= $data['kepada_suratkeluar'] ?></td>
+					<td style="word-break:break-all; word-wrap:break-word"><?= $data['perihal_suratkeluar'] ?></td>
+					<td style="word-break:break-all; word-wrap:break-word;"><?= base_url('public/surat_keluar/') . $data['file_suratkeluar'] ?></td>
 				</tr>
 			<?php
 				$no++;

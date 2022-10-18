@@ -15,7 +15,7 @@ if ($this->session->userdata('v4lid') == "bagian") {
 		#table {
 			font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 			border-collapse: collapse;
-			width: 100%;
+			/* width: 100%; */
 			font-size: 13px;
 		}
 
@@ -34,7 +34,7 @@ if ($this->session->userdata('v4lid') == "bagian") {
 		}
 
 		#table th {
-			padding-top: 10px;
+			/* padding-top: 10px; */
 			text-align: left;
 			background-color: #4d4d4d;
 			color: white;
@@ -65,6 +65,7 @@ if ($this->session->userdata('v4lid') == "bagian") {
 				<th>Nomor Surat</th>
 				<th>Kepada</th>
 				<th>Perihal</th>
+				<th>File</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -72,20 +73,22 @@ if ($this->session->userdata('v4lid') == "bagian") {
 			$no = 1;
 			foreach ($suratmasuk->result_array() as $data) { ?>
 				<tr>
-					<td scope="row"><?= $no ?></td>
-					<td><?= date("d-m-Y", strtotime($data['tanggalmasuk_suratmasuk'])) ?></td>
-					<td><?= date("d-m-Y", strtotime($data['tanggalsurat_suratmasuk'])) ?></td>
-					<td><?= $data['kode_suratmasuk'] ?></td>
-					<td><?= $data['pengirim'] ?></td>
-					<td><?= $data['nomor_suratmasuk'] ?></td>
-					<td><?= $data['kepada_suratmasuk'] ?></td>
-					<td><?= $data['perihal_suratmasuk'] ?></td>
+					<td scope="row" style="word-break:break-all; word-wrap:break-word"><?= $no ?></td>
+					<td style="word-break:break-all; word-wrap:break-word"><?= date("d-m-Y", strtotime($data['tanggalmasuk_suratmasuk'])) ?></td>
+					<td style="word-break:break-all; word-wrap:break-word"><?= date("d-m-Y", strtotime($data['tanggalsurat_suratmasuk'])) ?></td>
+					<td style="word-break:break-all; word-wrap:break-word"><?= $data['kode_suratmasuk'] ?></td>
+					<td style="word-break:break-all; word-wrap:break-word"><?= $data['pengirim'] ?></td>
+					<td style="word-break:break-all; word-wrap:break-word"><?= $data['nomor_suratmasuk'] ?></td>
+					<td style="word-break:break-all; word-wrap:break-word"><?= $data['kepada_suratmasuk'] ?></td>
+					<td style="word-break:break-all; word-wrap:break-word"><?= $data['perihal_suratmasuk'] ?></td>
+					<td style="word-break:break-all; word-wrap:break-word;"><?= base_url('public/surat_masuk/') . $data['file_suratmasuk'] ?></td>
 				</tr>
 			<?php
 				$no++;
 			} ?>
 		</tbody>
 	</table>
+
 
 	<?php
 
