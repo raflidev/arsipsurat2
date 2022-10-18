@@ -75,7 +75,7 @@ class Login extends CI_Controller
 				$this->session->set_userdata('nama', $data['nama_bagian']);
 				$this->session->set_userdata('id', $data['id_bagian']);
 				$this->session->set_flashdata("success", "Login berhasil");
-				redirect('admin');
+				redirect('bagian');
 			} else {
 				$this->session->set_flashdata("failed", "username atau password anda salah");
 				redirect('login/bagian');

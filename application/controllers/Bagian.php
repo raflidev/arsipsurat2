@@ -28,7 +28,11 @@ class Bagian extends CI_Controller
 		if (!isset($_SESSION['v4lid'])) {
 			redirect('login');
 		}
-		$this->load->view('admin/admin_index');
+		if ($_SESSION['v4lid'] == "bagian") {
+			$this->load->view('admin/admin_index');
+		} else if ($_SESSION['v4lid'] == "admin") {
+			redirect('admin');
+		}
 	}
 
 	// CRUD SURATMASUK

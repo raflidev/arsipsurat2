@@ -28,7 +28,11 @@ class Admin extends CI_Controller
 		if (!isset($_SESSION['v4lid'])) {
 			redirect('login');
 		}
-		$this->load->view('admin/admin_index');
+		if ($_SESSION['v4lid'] == "bagian") {
+			redirect('bagian');
+		} else if ($_SESSION['v4lid'] == "admin") {
+			$this->load->view('admin/admin_index');
+		}
 	}
 
 	// CRUD SURATMASUK
