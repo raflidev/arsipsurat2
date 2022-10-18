@@ -40,6 +40,7 @@ $data 		= $sql->row_array();
 								<li><a href="<?= base_url('bagian/suratmasuk') ?>"><i class="fa  fa-inbox"></i>Surat Masuk</a></li>
 							<?php } ?>
 							<?php if ($this->session->userdata('v4lid') == "admin") { ?>
+								<li><a href="<?= base_url('admin/suratmasuk') ?>"><i class="fa fa-inbox"></i>Surat Masuk</a></li>
 								<li><a href="<?= base_url('admin/suratkeluar') ?>"><i class="fa fa-send"></i>Surat Keluar</a></li>
 							<?php } ?>
 						</ul>

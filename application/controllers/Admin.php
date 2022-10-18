@@ -202,7 +202,7 @@ class Admin extends CI_Controller
 	public function laporan_suratmasuk_pdf()
 	{
 		$from = date('Y-m-d', strtotime($_GET['from']));
-		$to = date('Y-m-d', strtotime($_GET['to']) + 86400);
+		$to = date('Y-m-d', strtotime($_GET['to']));
 		$tipe = isset($_GET['tipe_tgl']) ? $_GET['tipe_tgl'] : 0;
 		$data['suratmasuk'] = $this->db->query("SELECT * FROM tb_suratmasuk where $tipe between '$from' and '$to' order by id_suratmasuk asc");
 
@@ -216,7 +216,7 @@ class Admin extends CI_Controller
 	public function laporan_suratmasuk_excel()
 	{
 		$from = date('Y-m-d', strtotime($_GET['from']));
-		$to = date('Y-m-d', strtotime($_GET['to']) + 86400);
+		$to = date('Y-m-d', strtotime($_GET['to']));
 		$tipe = isset($_GET['tipe_tgl']) ? $_GET['tipe_tgl'] : 0;
 		$data = $this->db->query("SELECT * FROM tb_suratmasuk where $tipe between '$from' and '$to' order by id_suratmasuk asc");
 
@@ -277,7 +277,7 @@ class Admin extends CI_Controller
 	public function laporan_suratkeluar_pdf()
 	{
 		$from = date('Y-m-d', strtotime($_GET['from']));
-		$to = date('Y-m-d', strtotime($_GET['to']) + 86400);
+		$to = date('Y-m-d', strtotime($_GET['to']));
 		$tipe = isset($_GET['tipe_tgl']) ? $_GET['tipe_tgl'] : 0;
 		$data['suratkeluar'] = $this->db->query("SELECT * FROM tb_suratkeluar where $tipe between '$from' and '$to' order by id_suratkeluar asc");
 
@@ -291,7 +291,7 @@ class Admin extends CI_Controller
 	public function laporan_suratkeluar_excel()
 	{
 		$from = date('Y-m-d', strtotime($_GET['from']));
-		$to = date('Y-m-d', strtotime($_GET['to']) + 86400);
+		$to = date('Y-m-d', strtotime($_GET['to']));
 		$tipe = isset($_GET['tipe_tgl']) ? $_GET['tipe_tgl'] : 0;
 		$data = $this->db->query("SELECT * FROM tb_suratkeluar where $tipe between '$from' and '$to' order by id_suratkeluar asc");
 

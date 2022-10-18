@@ -115,8 +115,8 @@
 															<?php } else { ?>
 																<td style="text-align:center;">
 																	<a href=<?= base_url('public/surat_masuk/') . $data['file_suratmasuk'] ?>><button type="button" title="Unduh File" class="btn btn-success btn-xs"><i class="fa fa-download"></i></button></a>
-																	<a href=<?= base_url('admin/detail_suratmasuk') ?>?id_suratmasuk=<?= $data['id_suratmasuk'] ?>><button type="button" title="Detail" class="btn btn-info btn-xs"><i class="fa fa-file-image-o"></i></button></a>
-																	<a href=<?= base_url('admin/input_disposisi_suratmasuk') ?>?id_suratmasuk=<?= $data['id_suratmasuk'] ?>><button type="button" title="Beri Pesan" class="btn btn-default btn-xs"><i class="fa fa-edit"></i></button></a>
+																	<a href=<?= base_url('bagian/detail_suratmasuk') ?>?id_suratmasuk=<?= $data['id_suratmasuk'] ?>><button type="button" title="Detail" class="btn btn-info btn-xs"><i class="fa fa-file-image-o"></i></button></a>
+																	<a href=<?= base_url('bagian/input_disposisi_suratmasuk') ?>?id_suratmasuk=<?= $data['id_suratmasuk'] ?>><button type="button" title="Beri Pesan" class="btn btn-default btn-xs"><i class="fa fa-edit"></i></button></a>
 																</td>
 															<?php } ?>
 														</tr>

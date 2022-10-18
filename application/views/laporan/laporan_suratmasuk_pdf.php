@@ -51,7 +51,7 @@ if ($this->session->userdata('v4lid') == "bagian") {
 	<div style="text-align:center">
 		<h3>LAPORAN SURAT MASUK
 			<br>Surat Menyurat dan Kearsipan SMK AL-MUNIR
-			<br><?= date('d F Y', strtotime($_GET['from'])) ?> - <?= date('d F Y', strtotime($_GET['to'])) ?>
+			<br><?= date('d F Y', strtotime($_GET['from'])) ?> - <?= date('d F Y', strtotime($_GET['to']) - 86400) ?>
 		</h3>
 	</div>
 	<table id="table">
