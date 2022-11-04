@@ -81,14 +81,6 @@ if ($this->session->userdata('v4lid') == "bagian") {
 												<input type="text" id="no_rak" name="no_rak" required="required" placeholder="Masukkan No Rak Surat" class="form-control col-md-7 col-xs-12">
 											</div>
 										</div>
-										<div class="form-group">
-											<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">No Fisis <span class="required">*</span>
-											</label>
-											<div class="col-md-9 col-sm-9 col-xs-12">
-												<input type="text" id="no_fisis" name="no_fisis" required="required" placeholder="Masukkan No Fisis Surat" class="form-control col-md-7 col-xs-12">
-											</div>
-										</div>
-
 										<div class="ln_solid"></div>
 										<div class="form-group">
 											<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">

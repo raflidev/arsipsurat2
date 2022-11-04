@@ -83,7 +83,6 @@ if ($this->session->userdata('v4lid') == "bagian") {
 													<th width="10%">Tanggal Surat</th>
 													<th width="3%">No Box</th>
 													<th width="3%">No Rak</th>
-													<th width="3%">No Fisis</th>
 													<th width="15%">Aksi</th>
 												</tr>
 											</thead>
@@ -102,7 +101,6 @@ if ($this->session->userdata('v4lid') == "bagian") {
                               <td>	' . $data['tanggalsurat_suratmasuk'] . '	</td>
                               <td>  ' . $data['no_box'] . '  </td> 
                               <td>  ' . $data['no_rak'] . '  </td> 
-                              <td>  ' . $data['no_fisis'] . '  </td> 
                               <td style="text-align:center;">
                               <a href=' . base_url('admin/edit_arsip_suratmasuk') . '?id_arsipmasuk=' . $data['id_arsipmasuk'] . '><button type="button" title="Edit" class="btn btn-default btn-xs"><i class="fa fa-edit"></i></button></a>
                               <a onclick="return konfirmasi()" href="' . base_url('admin/delete_arsip_suratmasuk') . '?id_arsipmasuk=' . $data['id_arsipmasuk'] . '"><button type="button" title="Hapus" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button></a></td>
