@@ -77,7 +77,11 @@ if ($this->session->userdata('v4lid') == "bagian") {
 										$sql2 		= $this->db->query("SELECT * FROM tb_suratmasuk ORDER BY nomorurut_suratmasuk DESC LIMIT 1");
 										$data     = $sql2->row_array();
 										$jumlah   = $sql2->num_rows();
-										$nomor = $data['nomorurut_suratmasuk'];
+										if ($data != NULL) {
+											$nomor = $data['nomorurut_suratmasuk'];
+										} else {
+											$nomor = 0;
+										}
 
 
 										if ($jumlah = 0) {

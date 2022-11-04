@@ -78,7 +78,12 @@ if ($this->session->userdata('v4lid') == "bagian") {
 										$sql2 	= $this->db->query("SELECT * FROM tb_suratkeluar ORDER BY nomor_suratkeluar DESC LIMIT 1");
 										$data     = $sql2->row_array();
 										$jumlah   = $sql2->num_rows();
-										$nomor = $data['nomor_suratkeluar'];
+
+										if ($data != NULL) {
+											$nomor = $data['nomor_suratkeluar'];
+										} else {
+											$nomor = 0;
+										}
 
 										if ($jumlah = 0) {
 											$nomorbaru = "0001";
